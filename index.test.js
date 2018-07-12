@@ -35,6 +35,14 @@ describe('withObservedProperties', () => {
       .not.to.have.been.called;
   });
 
+  it('Should not trigger propertyChangedCallback when ' +
+    'an unobserved property is set.', () => {
+    testElement.unosberved = 40;
+
+    expect(testElement.propertyChangedCallback)
+      .not.to.have.been.called;
+  });
+
   it('Should trigger propertyChangedCallback when ' +
     'an observed property is set.', () => {
     testElement.rate = 50;
@@ -56,7 +64,7 @@ describe('withObservedProperties', () => {
       .to.have.been.calledWith('rate', 125, 125);
   });
 
-  it('Should make getters for the observed properties.', () => {
+  it('Should make getters for observed properties.', () => {
     testElement.propertyChangedCallback = undefined;
     testElement.rate = 85;
 
