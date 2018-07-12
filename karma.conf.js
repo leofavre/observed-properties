@@ -1,4 +1,3 @@
-const path = require('path');
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 const filesPattern = '*.test.js';
@@ -14,7 +13,7 @@ module.exports = (config) => {
     },
     browserNoActivityTimeout: 60000,
     singleRun: true,
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai-sinon'],
     files: [{
       pattern: filesPattern,
       watched: false
