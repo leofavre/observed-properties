@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "semistandard",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "max-len": ["error", {
+      "code": 80,
+      "ignorePattern": "^import\\s.+\\sfrom\\s.+;$",
+      "ignoreUrls": true,
+      "ignoreTemplateLiterals": true
+    }]
+  },
+  "globals": {
+    "describe": true,
+    "it": true,
+    "should": true,
+    "expect": true,
+    "before": true,
+    "after": true,
+    "beforeEach": true,
+    "afterEach": true
+  },
+  "overrides": [{
+    "files": "*.test.js",
+    "rules": {
+      "no-unused-expressions": "off"
+    }
+  }]
+}
