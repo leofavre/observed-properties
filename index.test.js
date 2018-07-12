@@ -64,10 +64,10 @@ describe('withObservedProperties', () => {
       .to.have.been.calledWith('rate', 125, 125);
   });
 
-  it('Should make getters for observed properties.', () => {
+  it('Should correctly access getters.', () => {
     testElement.propertyChangedCallback = undefined;
     testElement.rate = 85;
 
-    expect(testElement.rate).to.equal(testElement._rate);
+    expect(testElement.rate).to.equal(85);
   });
 });
