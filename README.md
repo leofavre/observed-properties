@@ -10,7 +10,7 @@ In the background, it uses ES6 getters and setters to cause a side-effect everyt
 npm install observed-properties --save
 ```
 
-## Usage
+## Use
 
 ### Import
 
