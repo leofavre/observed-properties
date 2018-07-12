@@ -1,6 +1,12 @@
 language: node_js
-
 node_js:
-  - "8"
-
+- '8'
 script: npm test
+deploy:
+  provider: npm
+  email: leo@leofavre.com
+  api_key:
+    secure: fwjJtdXnKFJtOTJ9VN1w7kYxrJAF3nqYeUYHmmswCfU/Y5cwVVccZp6V1+CrRn23bqQnaydy5IrFmXnyjfzzkdR30Sd6DG1fJovWzHHe7C3A5yMia/tcks47ZLk7mdrCj+T7IwW5bxfsYuSN3KkBBWmMFqsSC5tsBuzDo9upnU8gm4gkeBUGOqwhBmNUQvNyXlU4euGcfERf0ZicDMeHhNYdGDvN/3+9RWdiiSvynEqY7Zlz0vhD+V1Jp/0hRFA4b330yqR6kPgVKb+O8WrS7Rk8oTyocovGYSeS6LSZApwsBFH5ORNx2NnG4O2xNNk4Issc/vV7Dw9LqnJk4voaIIyOXKUmNl+45+5ZzWpX5ldmFdXnlEdDF/A4COeZp0Id+Kg3csaoUKau2D746FMuRp8xJyrW9NNzRER0c9mRyMLFRCUhBo9cTdhCAbKUoMyTSbglr0R5ZNfe2YsZqAbLC9E0mRMxAjlRelmtoGtARx87F3UoH+2+FQkwgVo9qlAWA74N9T7eRlEVR6DHu2M0CYi/k0P2ERr5/z9v1IiLoHWJjNrmNOWGA6JlRQpUWDqDEhOZgixbj4XfVeoF9B7jS9BDtmd4pd8zm5Z7DLfTBPOLVwiGzQ692z0A2xwm4fA3EdZGNwMxcAVXVG4Uior4D9eEyc5p7uTBKNKtTe/pDlY=
+  on:
+    tags: true
+    repo: leofavre/observed-properties
