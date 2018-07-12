@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- Automatic `npm publish` with Travis CI.
+
 ### Fixed
 
 - Improve examples.
