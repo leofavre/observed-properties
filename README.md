@@ -74,4 +74,6 @@ class TopTen extends EnhancedHTMLElement {
     `;
   }
 }
+
+window.customElements.define('top-ten', TopTen);
 ```
