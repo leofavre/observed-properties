@@ -16,10 +16,17 @@ npm install observed-properties --save
 
 ### Import
 
-Import `withObservedProperties`. Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module) without a build process.
+Import `withObservedProperties`.
 
 ```javascript
-import { withObservedProperties } from './node_modules/observed-properties/index.js';
+import { withObservedProperties } from 'observed-properties';
+```
+
+Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module) without a build process.
+
+```javascript
+import { withObservedProperties } from
+  './node_modules/observed-properties/index.js';
 ```
 
 ### Enhance HTMLElement
@@ -43,7 +50,7 @@ class TopTen extends EnhancedHTMLElement {}
 Use `observedProperties` and `propertyChangedCallback` just like you would use `observedAttributes` and `attributeChangedCallback`.
 
 ```javascript
-import { withObservedProperties } from './node_modules/observed-properties/index.js';
+import { withObservedProperties } from 'observed-properties';
 
 const EnhancedHTMLElement = withObservedProperties(HTMLElement);
 
