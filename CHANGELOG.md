@@ -1,3 +1,10 @@
+## [0.1.2] - 2018-07-12
+
+### Fixed
+
+- [Use Symbols as keys to avoid collision.](https://github.com/leofavre/observed-properties/issues/11)
+
+
 ## [0.1.1] - 2018-07-12
 
 ### Added
