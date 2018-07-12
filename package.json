@@ -11,12 +11,12 @@
     "url": "git+https://github.com/leofavre/observed-properties.git"
   },
   "keywords": [
-    "webComponents",
-    "customElements",
+    "web-components",
+    "custom-elements",
+    "web-component",
+    "custom-element",
     "observedProperties",
-    "propertyChangedCallback",
-    "observedAttributes",
-    "attributeChangedCallback"
+    "propertyChangedCallback"
   ],
   "author": "Leonardo Favre <leo@leofavre.com> (http://www.leofavre.com/)",
   "license": "MIT",
