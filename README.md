@@ -1,4 +1,4 @@
-# observedProperties
+# Observed Properties
 
 Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
