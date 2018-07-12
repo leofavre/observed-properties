@@ -10,27 +10,35 @@ In the background, it uses ES6 getters and setters to cause a side-effect everyt
 npm install observed-properties --save
 ```
 
-## Use
+## Usage
 
-1. Import `withObservedProperties`. Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module) without a build process.
+### Import
+
+Import `withObservedProperties`. Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module) without a build process.
 
 ```javascript
 import { withObservedProperties } from './node_modules/observed-properties/index.js';
 ```
 
-2. Enhance the `HTMLElement` by passing it to the `withObservedProperties` helper.
+### Enhance HTMLElement
+
+Enhance the `HTMLElement` by passing it to the `withObservedProperties` helper.
 
 ```javascript
 const EnhancedHTMLElement = withObservedProperties(HTMLElement);
 ```
 
-3. Create a new web component class that extends the `EnhancedHTMLElement`.
+### Extend
+
+Create a new web component class that extends the `EnhancedHTMLElement`.
 
 ```javascript
 class TopTen extends EnhancedHTMLElement {}
 ```
 
-4. Use `observedProperties` and `propertyChangedCallback` just like you would use `observedAttributes` and `attributeChangedCallback`.
+### Create a component
+
+Use `observedProperties` and `propertyChangedCallback` just like you would use `observedAttributes` and `attributeChangedCallback`.
 
 ```javascript
 import { withObservedProperties } from './node_modules/observed-properties/index.js';
