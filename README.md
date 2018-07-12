@@ -1,6 +1,6 @@
 # observedProperties
 
-Ever wondered why native web components have an API to handle attribute changes but not property changes?
+Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
 This script implements both `observedProperties` and `propertyChangedCallback`.
 
