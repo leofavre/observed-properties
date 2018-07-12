@@ -1,7 +1,7 @@
 {
   "name": "observed-properties",
-  "version": "0.1.0",
-  "description": "observedProperties for native custom elements",
+  "version": "0.1.1",
+  "description": "Observed properties for native custom elements",
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js"

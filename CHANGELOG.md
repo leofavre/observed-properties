@@ -1,3 +1,14 @@
+## [0.1.1] - 2018-07-12
+
+### Added
+
+- Automatic `npm publish` with Travis CI.
+
+### Fixed
+
+- Improve examples.
+
+
 ## [0.1.0] - 2018-07-12
 
 ### Added
