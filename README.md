@@ -22,7 +22,7 @@ Import `withObservedProperties`.
 import { withObservedProperties } from 'observed-properties';
 ```
 
-Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module), without havong to depend on a build process.
+Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module), without having to depend on a build process.
 
 ```javascript
 import { withObservedProperties } from './node_modules/observed-properties/index.js';
