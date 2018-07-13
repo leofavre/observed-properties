@@ -2,7 +2,7 @@
 
 ### Fixed
 
-- Fixed a bug that would cause the script to prioritize the inherited property value.
+- Fixed a bug that would cause the script to prioritize inherited property values over set ones.
 
 
 ## [0.1.4] - 2018-07-13
