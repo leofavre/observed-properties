@@ -1,3 +1,10 @@
+## [Unreleased]
+
+### Fixed
+
+- Fixed a bug that would cause the script to prioritize the inherited property value.
+
+
 ## [0.1.4] - 2018-07-13
 
 ### Added
