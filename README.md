@@ -1,5 +1,7 @@
 # Observed Properties
 
+![](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)
+
 Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
 This script implements both `observedProperties` and `propertyChangedCallback`.
