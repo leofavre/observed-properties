@@ -92,6 +92,11 @@ describe('withObservedProperties', () => {
     testElement.rate = 80;
 
     expect(testElement.propertyChangedCallback)
-      .to.have.been.calledOnceWith('rate', 40, 80);
+      .to.have.been.calledWith('rate', 40, 80);
+
+    testElement.rate = 160;
+
+    expect(testElement.propertyChangedCallback)
+      .to.have.been.calledWith('rate', 80, 160);
   });
 });
