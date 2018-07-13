@@ -1,3 +1,11 @@
+## [0.1.3] - 2018-07-12
+
+### Fixed
+
+- Handling inherited properties.
+- Improved documentation.
+
+
 ## [0.1.2] - 2018-07-12
 
 ### Fixed
@@ -13,7 +21,7 @@
 
 ### Fixed
 
-- Improve examples.
+- Improved examples.
 
 
 ## [0.1.0] - 2018-07-12

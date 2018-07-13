@@ -4,7 +4,7 @@ Have you ever wondered why native web components have an API to handle attribute
 
 This script implements both `observedProperties` and `propertyChangedCallback`.
 
-In the background, it uses ES6 getters and setters to cause a side-effect — run the callback function — everytime a property changes.
+In the background, it uses ES6 getters and setters to cause a side-effect — run the callback method — everytime a property changes.
 
 ## Install
 
@@ -20,7 +20,7 @@ Import `withObservedProperties`.
 import { withObservedProperties } from 'observed-properties';
 ```
 
-Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module) without a build process.
+Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module), without havong to depend on a build process.
 
 ```javascript
 import { withObservedProperties } from './node_modules/observed-properties/index.js';
@@ -42,9 +42,37 @@ Create a new web component class that extends `EnhancedHTMLElement`.
 class TopTen extends EnhancedHTMLElement {}
 ```
 
-## Create a component
+## Observe changes
 
-Use `observedProperties` and `propertyChangedCallback` just like you would use `observedAttributes` and `attributeChangedCallback`.
+Tell the component which properties to observe by setting `observedProperties`.
+
+```javascript
+class TopTen extends EnhancedHTMLElement {
+  static get observedProperties () {
+    return ['songs'];
+  }
+}
+```
+
+## React to changes
+
+Set the callback method that will be run everytime a property changes.
+
+```javascript
+class TopTen extends EnhancedHTMLElement {
+  static get observedProperties () {
+    return ['songs'];
+  }
+
+  propertyChangedCallback (propName, oldValue, value) {
+    if (propName === 'songs' && oldValue !== value) {
+      this.render(value);
+    }
+  }
+}
+```
+
+## Complete example
 
 ```javascript
 import { withObservedProperties } from 'observed-properties';
