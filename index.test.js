@@ -25,6 +25,13 @@ describe('withObservedProperties', () => {
     testElement = undefined;
   });
 
+  it('Should correctly access getters.', () => {
+    testElement.propertyChangedCallback = undefined;
+    testElement.rate = 85;
+
+    expect(testElement.rate).to.equal(85);
+  });
+
   it('Should not trigger propertyChangedCallback when ' +
     'there are no observed properties.', () => {
     const blindTestElement = document.createElement('unobserved-rate');
@@ -64,10 +71,27 @@ describe('withObservedProperties', () => {
       .to.have.been.calledWith('rate', 125, 125);
   });
 
-  it('Should correctly access getters.', () => {
-    testElement.propertyChangedCallback = undefined;
-    testElement.rate = 85;
+  it('Should handle property inheritance correctly.', () => {
+    class MainClass extends HTMLElement {
+      constructor () {
+        super();
+        this.rate = 40;
+      }
+    }
 
-    expect(testElement.rate).to.equal(85);
+    class ChildClass extends withObservedProperties(MainClass) {
+      static get observedProperties () {
+        return ['rate'];
+      }
+    }
+
+    window.customElements.define('extended-rate', ChildClass);
+
+    testElement = document.createElement('extended-rate');
+    testElement.propertyChangedCallback = sinon.spy();
+    testElement.rate = 80;
+
+    expect(testElement.propertyChangedCallback)
+      .to.have.been.calledOnceWith('rate', 40, 80);
   });
 });
