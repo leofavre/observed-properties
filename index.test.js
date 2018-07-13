@@ -71,7 +71,7 @@ describe('withObservedProperties', () => {
       .to.have.been.calledWith('rate', 125, 125);
   });
 
-  it('Should handle property inheritance correctly.', () => {
+  it('Should correctly handle property inheritance.', () => {
     class MainClass extends HTMLElement {
       constructor () {
         super();
