@@ -1,8 +1,8 @@
-## [Unreleased]
+## [0.1.4] - 2018-07-13
 
 ### Added
 
-- Travis CI Build Passing badge.
+- Travis CI Build: Passing badge.
 
 
 ## [0.1.3] - 2018-07-12
