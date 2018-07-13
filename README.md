@@ -58,7 +58,7 @@ class TopTen extends EnhancedHTMLElement {
 
 ## React to changes
 
-Set the callback method that will be run everytime a property changes.
+Set `propertyChangedCallback`, the callback method that will be run everytime a property changes.
 
 ```javascript
 class TopTen extends EnhancedHTMLElement {
