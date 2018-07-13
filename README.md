@@ -1,8 +1,10 @@
 # Observed Properties
 
+![](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)
+
 Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
-This script implements both `observedProperties` and `propertyChangedCallback`.
+This script implements both `observedProperties` and `propertyChangedCallback` that behave just like `observedAttributes` and `attributeChangedCallback` do.
 
 In the background, it uses ES6 getters and setters to cause a side-effect — run the callback method — everytime a property changes.
 
@@ -20,7 +22,7 @@ Import `withObservedProperties`.
 import { withObservedProperties } from 'observed-properties';
 ```
 
-Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module), without havong to depend on a build process.
+Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module), without having to depend on a build process.
 
 ```javascript
 import { withObservedProperties } from './node_modules/observed-properties/index.js';
@@ -56,7 +58,7 @@ class TopTen extends EnhancedHTMLElement {
 
 ## React to changes
 
-Set the callback method that will be run everytime a property changes.
+Set `propertyChangedCallback`, the method that will be run everytime a property changes.
 
 ```javascript
 class TopTen extends EnhancedHTMLElement {

@@ -1,3 +1,10 @@
+## [Unreleased]
+
+### Added
+
+- Travis CI Build Passing badge.
+
+
 ## [0.1.3] - 2018-07-12
 
 ### Fixed
