@@ -4,71 +4,222 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
 
-class RateComponent extends withObservedProperties() {
-  static get observedProperties () {
-    return ['rate'];
-  }
-}
-
-window.customElements.define('observed-rate', RateComponent);
-window.customElements.define('unobserved-rate', withObservedProperties());
-
-let testElement;
+let testEl;
+let spy;
 
 describe('withObservedProperties', () => {
   beforeEach(() => {
-    testElement = document.createElement('observed-rate');
-    testElement.propertyChangedCallback = sinon.spy();
+    spy = sinon.spy();
   });
 
   afterEach(() => {
-    testElement = undefined;
+    testEl = undefined;
+    spy = undefined;
   });
 
-  it('Should correctly access getters.', () => {
-    testElement.propertyChangedCallback = undefined;
-    testElement.rate = 85;
+  it('Should verify that attributeChangedCallback is not called ' +
+    'if it is defined after observedAttributes.', () => {
+    class AttrCbDefinedAfter extends HTMLElement {
+      static get observedAttributes () {
+        return ['rate'];
+      }
+    }
 
-    expect(testElement.rate).to.equal(85);
+    window.customElements.define('attr-cb-defined-after', AttrCbDefinedAfter);
+    testEl = document.createElement('attr-cb-defined-after');
+
+    testEl.attributeChangedCallback = function (attrName, oldValue, newValue) {
+      spy(attrName, oldValue, newValue);
+    };
+
+    testEl.setAttribute('rate', 50);
+
+    expect(spy).not.to.have.been.called;
   });
 
-  it('Should not trigger propertyChangedCallback when ' +
+  it('Should not call propertyChangedCallback ' +
+    'if it is defined after observedProperties.', () => {
+    class PropCbDefinedAfter extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
+    }
+
+    window.customElements.define('prop-cb-defined-after', PropCbDefinedAfter);
+    testEl = document.createElement('prop-cb-defined-after');
+
+    testEl.propertyChangedCallback = function (propName, oldValue, newValue) {
+      spy(propName, oldValue, newValue);
+    };
+
+    testEl.rate = 50;
+
+    expect(spy).not.to.have.been.called;
+  });
+
+  it('Should verify that attributeChangedCallback is called ' +
+    'with attribute name, old value and new value.', () => {
+    class AttrCbArgs extends HTMLElement {
+      static get observedAttributes () {
+        return ['rate'];
+      }
+
+      attributeChangedCallback (attrName, oldValue, newValue) {
+        spy(attrName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('attr-cb-args', AttrCbArgs);
+    testEl = document.createElement('attr-cb-args');
+    testEl.setAttribute('rate', 50);
+
+    expect(spy).to.have.been.calledWith('rate', null, '50');
+  });
+
+  it('Should call propertyChangedCallback ' +
+    'with property name, old value and new value.', () => {
+    class PropCbArgs extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
+
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('prop-cb-args', PropCbArgs);
+    testEl = document.createElement('prop-cb-args');
+    testEl.rate = 50;
+
+    expect(spy).to.have.been.calledWith('rate', undefined, 50);
+  });
+
+  it('Should verify that attributeChangedCallback is not called ' +
+    'if there are no observed attributes.', () => {
+    class AttrNoObserved extends HTMLElement {
+      attributeChangedCallback (attrName, oldValue, newValue) {
+        spy(attrName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('attr-no-observed', AttrNoObserved);
+    testEl = document.createElement('attr-no-observed');
+    testEl.setAttribute('rate', 50);
+
+    expect(spy).not.to.have.been.called;
+  });
+
+  it('Should not call propertyChangedCallback when ' +
     'there are no observed properties.', () => {
-    const blindTestElement = document.createElement('unobserved-rate');
-    blindTestElement.propertyChangedCallback = sinon.spy();
-    blindTestElement.rate = 300;
+    class PropNoObserved extends withObservedProperties() {
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
+    }
 
-    expect(blindTestElement.propertyChangedCallback)
-      .not.to.have.been.called;
+    window.customElements.define('prop-no-observed', PropNoObserved);
+    testEl = document.createElement('prop-no-observed');
+    testEl.rate = 50;
+
+    expect(spy).not.to.have.been.called;
   });
 
-  it('Should not trigger propertyChangedCallback when ' +
+  it('Should verify that attributeChangedCallback is not called ' +
+    'if an unobserved attribute is set.', () => {
+    class AttrUnobserved extends HTMLElement {
+      static get observedAttributes () {
+        return ['rate'];
+      }
+
+      attributeChangedCallback (attrName, oldValue, newValue) {
+        spy(attrName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('attr-unobserved', AttrUnobserved);
+    testEl = document.createElement('attr-unobserved');
+    testEl.setAttribute('unobserved', 50);
+
+    expect(spy).not.to.have.been.called;
+  });
+
+  it('Should not call propertyChangedCallback when ' +
     'an unobserved property is set.', () => {
-    testElement.unosberved = 40;
+    class PropUnobserved extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
 
-    expect(testElement.propertyChangedCallback)
-      .not.to.have.been.called;
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('prop-unobserved', PropUnobserved);
+    testEl = document.createElement('prop-unobserved');
+    testEl.unobserved = 50;
+
+    expect(spy).not.to.have.been.called;
   });
 
-  it('Should trigger propertyChangedCallback when ' +
-    'an observed property is set.', () => {
-    testElement.rate = 50;
+  it('Should verify that attributeChangedCallback is called even when ' +
+    'an observed attribute is set with the same value.', () => {
+    class AttrSameValue extends HTMLElement {
+      static get observedAttributes () {
+        return ['rate'];
+      }
 
-    expect(testElement.propertyChangedCallback)
-      .to.have.been.calledWith('rate', undefined, 50);
+      attributeChangedCallback (attrName, oldValue, newValue) {
+        spy(attrName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('attr-same-value', AttrSameValue);
+    testEl = document.createElement('attr-same-value');
+
+    testEl.setAttribute('rate', 50);
+    testEl.setAttribute('rate', 50);
+
+    expect(spy).to.have.been.calledTwice;
   });
 
-  it('Should trigger propertyChangedCallback even when ' +
-    'an observed property is set but its value does not change.', () => {
-    testElement.rate = 125;
+  it('Should call propertyChangedCallback even when ' +
+    'an observed property is set with the same value.', () => {
+    class PropSameValue extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
 
-    expect(testElement.propertyChangedCallback)
-      .to.have.been.calledWith('rate', undefined, 125);
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
+    }
 
-    testElement.rate = 125;
+    window.customElements.define('prop-same-value', PropSameValue);
+    testEl = document.createElement('prop-same-value');
 
-    expect(testElement.propertyChangedCallback)
-      .to.have.been.calledWith('rate', 125, 125);
+    testEl.rate = 50;
+    testEl.rate = 50;
+
+    expect(spy).to.have.been.calledTwice;
+  });
+
+  it('Shoud correctly access getters.', () => {
+    class PropGetter extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
+
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
+    }
+
+    window.customElements.define('prop-getter', PropGetter);
+    testEl = document.createElement('prop-getter');
+    testEl.rate = 40;
+    expect(testEl.rate).to.equal(40);
   });
 
   it('Should correctly handle property inheritance.', () => {
@@ -79,24 +230,23 @@ describe('withObservedProperties', () => {
       }
     }
 
-    class ChildClass extends withObservedProperties(MainClass) {
+    class PropInherited extends withObservedProperties(MainClass) {
       static get observedProperties () {
         return ['rate'];
       }
+
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
     }
 
-    window.customElements.define('extended-rate', ChildClass);
+    window.customElements.define('prop-inherited', PropInherited);
+    testEl = document.createElement('prop-inherited');
 
-    testElement = document.createElement('extended-rate');
-    testElement.propertyChangedCallback = sinon.spy();
-    testElement.rate = 80;
+    testEl.rate = 80;
+    expect(spy).to.have.been.calledWith('rate', 40, 80);
 
-    expect(testElement.propertyChangedCallback)
-      .to.have.been.calledWith('rate', 40, 80);
-
-    testElement.rate = 160;
-
-    expect(testElement.propertyChangedCallback)
-      .to.have.been.calledWith('rate', 80, 160);
+    testEl.rate = undefined;
+    expect(spy).to.have.been.calledWith('rate', 80, undefined);
   });
 });
