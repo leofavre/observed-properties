@@ -1,8 +1,15 @@
+## [0.1.6] - 2018-07-14
+
+### Fixed
+
+- Fixed a bug that caused `propertyChangedCallback` to be called even if defined after `observedProperties`.
+
+
 ## [0.1.5] - 2018-07-13
 
 ### Fixed
 
-- Fixed a bug that would cause the script to prioritize inherited property values over set ones.
+- Fixed a bug that caused the script to prioritize inherited property values over set ones.
 
 
 ## [0.1.4] - 2018-07-13
