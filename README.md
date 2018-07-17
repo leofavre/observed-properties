@@ -1,12 +1,14 @@
 # Observed Properties
 
+### Observed properties for native web components.
+
 ![](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)
 
 Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
 This script implements both `observedProperties` and `propertyChangedCallback` that behave just like `observedAttributes` and `attributeChangedCallback` do.
 
-In the background, it uses ES6 getters and setters to cause a side-effect — run the callback method — everytime a property changes.
+In the background, it uses ES6 setters to cause a side-effect — run the callback method — everytime a property changes.
 
 ## Install
 
@@ -111,3 +113,9 @@ class TopTen extends EnhancedHTMLElement {
 
 window.customElements.define('top-ten', TopTen);
 ```
+
+## Known issues
+
+This script does not play along with Polymer, SkateJS and possibly other web component libraries. The reason is that they use the same approach to detect property changes and it causes conflicts.
+
+Another possible approach would be to use ES6 Proxy, but Proxies are known to have performance issues and if you are using a web component library then you probably do not need another way of detecting property changes.
