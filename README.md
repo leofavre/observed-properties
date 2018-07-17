@@ -8,7 +8,7 @@ Have you ever wondered why native web components have an API to handle attribute
 
 This script implements both `observedProperties` and `propertyChangedCallback` that behave just like `observedAttributes` and `attributeChangedCallback` do.
 
-In the background, it uses ES6 getters and setters to cause a side-effect — run the callback method — everytime a property changes.
+In the background, it uses ES6 setters to cause a side-effect — run the callback method — everytime a property changes.
 
 ## Install
 
@@ -116,6 +116,6 @@ window.customElements.define('top-ten', TopTen);
 
 ## Known issues
 
-This script does not play along with Polymer, SkateJS and probably other web component libraries. The reason is that they use the same approach to detect property changes – with getters and setters – and it causes conflicts.
+This script does not play along with Polymer, SkateJS and possibly other web component libraries. The reason is that they use the same approach to detect property changes and it causes conflicts.
 
-The good news is that, if you are using a web component library, you probably will not need another way of detecting property changes, since they already offer this functionality.
+Another possible approach would be to use ES6 Proxy, but Proxies are known to have performance issues and if you are using a web component library then you probably do not need another way of detecting property changes.
