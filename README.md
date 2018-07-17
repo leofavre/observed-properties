@@ -118,4 +118,4 @@ window.customElements.define('top-ten', TopTen);
 
 This script does not play along with Polymer, SkateJS and possibly other web component libraries. The reason is that they use the same approach to detect property changes and it causes conflicts.
 
-Another possible approach would be to use ES6 Proxy, but Proxies are known to have performance issues and if you are using a web component library then you probably do not need another way of detecting property changes.
+Another possible approach would be to use ES6 Proxies, but they are known to have performance issues and, if you are using a web component library, then you probably already have a way to detect property changes.
