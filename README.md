@@ -1,6 +1,6 @@
 # Observed Properties
 
-### Observed properties for native custom elements
+### Observed properties for native web components.
 
 ![](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)
 
