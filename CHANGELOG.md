@@ -2,7 +2,7 @@
 
 ### Fixed
 
-- Micro improvement to Readme.
+- Tiny improvement to Readme.
 
 
 ## 0.1.7 - 2018-07-16
