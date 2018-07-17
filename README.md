@@ -116,6 +116,6 @@ window.customElements.define('top-ten', TopTen);
 
 ## Known issues
 
-This script does not play along with Polymer, SkateJS and probably other web component libraries. The reason is that they use the same approach to detect if a property has changed, by using getters and setters, which causes conflicts.
+This script does not play along with Polymer, SkateJS and probably other web component libraries. The reason is that they use the same approach to detect property changes – with getters and setters – and it causes conflicts.
 
-The good news, though, is that, if you are using a web component library, you probably do not need another way of detecting property changes, since they already offer this functionality.
+The good news is that, if you are using a web component library, you probably will not need another way of detecting property changes, since they already offer this functionality.
