@@ -1,3 +1,10 @@
+## 0.1.8 - 2018-07-16
+
+### Fixed
+
+- Tiny improvement to Readme.
+
+
 ## 0.1.7 - 2018-07-16
 
 ### Added
