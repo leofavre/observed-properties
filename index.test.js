@@ -1,8 +1,5 @@
 import { withObservedProperties } from './index.js';
-import chai from 'chai';
 import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-chai.use(sinonChai);
 
 let testEl;
 let spy;
@@ -248,5 +245,43 @@ describe('withObservedProperties', () => {
 
     testEl.rate = undefined;
     expect(spy).to.have.been.calledWith('rate', 80, undefined);
+  });
+
+  it('Should verify that the this keyword points to the ' +
+  'component instance in attributeChangedCallback.', () => {
+    class attrThis extends HTMLElement {
+      static get observedAttributes () {
+        return ['rate'];
+      }
+
+      attributeChangedCallback () {
+        spy(this);
+      }
+    }
+
+    window.customElements.define('attr-this', attrThis);
+    testEl = document.createElement('attr-this');
+
+    testEl.setAttribute('rate', 500);
+    expect(spy).to.have.been.calledWith(testEl);
+  });
+
+  it('Should verify that the this keyword points to the ' +
+  'component instance in propertyChangedCallback.', () => {
+    class propThis extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
+
+      propertyChangedCallback () {
+        spy(this);
+      }
+    }
+
+    window.customElements.define('prop-this', propThis);
+    testEl = document.createElement('prop-this');
+
+    testEl.rate = 500;
+    expect(spy).to.have.been.calledWith(testEl);
   });
 });
