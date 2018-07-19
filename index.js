@@ -2,10 +2,9 @@ export const withObservedProperties = (Base = HTMLElement) =>
   class extends Base {
     constructor () {
       super();
-      const { propertyChangedCallback } = this;
       const { observedProperties = [] } = this.constructor;
 
-      if (typeof propertyChangedCallback === 'function') {
+      if (typeof this.propertyChangedCallback === 'function') {
         observedProperties.forEach(propName => {
           const inheritedValue = this[propName];
           const privateKey = Symbol(propName);
@@ -18,7 +17,7 @@ export const withObservedProperties = (Base = HTMLElement) =>
             set (value) {
               const oldValue = this[privateKey];
               this[privateKey] = value;
-              propertyChangedCallback(propName, oldValue, value);
+              this.propertyChangedCallback(propName, oldValue, value);
             }
           });
         });

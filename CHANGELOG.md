@@ -1,3 +1,10 @@
+## 0.1.9 - 2018-07-18
+
+### Fixed
+
+- Fixed a bug that made `this` not to point to the component instance inside `propertyChangedCallback`.
+
+
 ## 0.1.8 - 2018-07-16
 
 ### Fixed
