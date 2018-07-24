@@ -338,6 +338,55 @@ describe('withObservedProperties', () => {
     document.body.removeChild(testEl);
   });
 
+  it('Should verify that attributeChangedCallback is not triggered after ' +
+    'the element is defined but no attributes change.', () => {
+    class LateAttrUnobserved extends HTMLElement {
+      static get observedAttributes () {
+        return ['rate'];
+      }
+
+      attributeChangedCallback (attrName, oldValue, newValue) {
+        console.log(attrName, oldValue, newValue);
+        spy(attrName, oldValue, newValue);
+      }
+    }
+
+    testEl = document.createElement('late-attr-unobserved');
+    testEl.removeAttribute('rate');
+
+    document.body.appendChild(testEl);
+    expect(spy).not.to.have.been.called;
+
+    window.customElements.define('late-attr-unobserved', LateAttrUnobserved);
+    expect(spy).not.to.have.been.called;
+
+    document.body.removeChild(testEl);
+  });
+
+  it('Should not trigger propertyChangedCallback after the element ' +
+    'is defined but no properties change.', () => {
+    class LatePropUnobserved extends withObservedProperties() {
+      static get observedProperties () {
+        return ['rate'];
+      }
+
+      propertyChangedCallback (propName, oldValue, newValue) {
+        spy(propName, oldValue, newValue);
+      }
+    }
+
+    testEl = document.createElement('late-prop-unobserved');
+    testEl.rate = undefined;
+
+    document.body.appendChild(testEl);
+    expect(spy).not.to.have.been.called;
+
+    window.customElements.define('late-prop-unobserved', LatePropUnobserved);
+    expect(spy).not.to.have.been.called;
+
+    document.body.removeChild(testEl);
+  });
+
   it('Should call the inherited connectedCallback.', () => {
     class Parent extends HTMLElement {
       connectedCallback () {
