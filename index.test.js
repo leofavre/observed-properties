@@ -339,7 +339,7 @@ describe('withObservedProperties', () => {
   });
 
   it('Should verify that attributeChangedCallback is not triggered after ' +
-    'the element is defined but no attributes change.', () => {
+    'the element is defined and appended but no attributes change.', () => {
     class LateAttrUnobserved extends HTMLElement {
       static get observedAttributes () {
         return ['rate'];
@@ -364,7 +364,7 @@ describe('withObservedProperties', () => {
   });
 
   it('Should not trigger propertyChangedCallback after the element ' +
-    'is defined but no properties change.', () => {
+    'is defined and appended but no properties change.', () => {
     class LatePropUnobserved extends withObservedProperties() {
       static get observedProperties () {
         return ['rate'];
