@@ -291,7 +291,7 @@ describe('withObservedProperties', () => {
   });
 
   it('Should verify that attributeChangedCallback is triggered ' +
-    'after the element is defined.', () => {
+    'after the element is defined and appended to the DOM.', () => {
     class LateAttr extends HTMLElement {
       static get observedAttributes () {
         return ['rate'];
@@ -314,8 +314,8 @@ describe('withObservedProperties', () => {
     document.body.removeChild(testEl);
   });
 
-  it('Should trigger propertyChangedCallback ' +
-    'after the element is defined.', () => {
+  it('Should trigger propertyChangedCallback after the element is ' +
+    'defined and appended to the DOM.', () => {
     class LateProp extends withObservedProperties() {
       static get observedProperties () {
         return ['rate'];
@@ -334,55 +334,6 @@ describe('withObservedProperties', () => {
 
     window.customElements.define('late-prop', LateProp);
     expect(spy).to.have.been.calledWith('rate', undefined, '33');
-
-    document.body.removeChild(testEl);
-  });
-
-  it('Should verify that attributeChangedCallback is not triggered after ' +
-    'the element is defined but no attributes change.', () => {
-    class LateAttrUnobserved extends HTMLElement {
-      static get observedAttributes () {
-        return ['rate'];
-      }
-
-      attributeChangedCallback (attrName, oldValue, newValue) {
-        console.log(attrName, oldValue, newValue);
-        spy(attrName, oldValue, newValue);
-      }
-    }
-
-    testEl = document.createElement('late-attr-unobserved');
-    testEl.removeAttribute('rate');
-
-    document.body.appendChild(testEl);
-    expect(spy).not.to.have.been.called;
-
-    window.customElements.define('late-attr-unobserved', LateAttrUnobserved);
-    expect(spy).not.to.have.been.called;
-
-    document.body.removeChild(testEl);
-  });
-
-  it('Should not trigger propertyChangedCallback after the element ' +
-    'is defined but no properties change.', () => {
-    class LatePropUnobserved extends withObservedProperties() {
-      static get observedProperties () {
-        return ['rate'];
-      }
-
-      propertyChangedCallback (propName, oldValue, newValue) {
-        spy(propName, oldValue, newValue);
-      }
-    }
-
-    testEl = document.createElement('late-prop-unobserved');
-    testEl.rate = undefined;
-
-    document.body.appendChild(testEl);
-    expect(spy).not.to.have.been.called;
-
-    window.customElements.define('late-prop-unobserved', LatePropUnobserved);
-    expect(spy).not.to.have.been.called;
 
     document.body.removeChild(testEl);
   });
