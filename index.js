@@ -9,9 +9,8 @@ export const withObservedProperties = (Base = HTMLElement) =>
 
       if (typeof this.propertyChangedCallback === 'function') {
         observedProperties.forEach(propName => {
-          const inheritedValue = this[propName];
           const PROP_NAME = Symbol(propName);
-          this[PROP_NAME] = inheritedValue;
+          this[PROP_NAME] = this[propName];
 
           Object.defineProperty(this, propName, {
             get () {
@@ -24,7 +23,12 @@ export const withObservedProperties = (Base = HTMLElement) =>
             }
           });
 
-          this[UPDATE_ON_CONNECTED] = [...this[UPDATE_ON_CONNECTED], propName];
+          if (typeof this[propName] !== 'undefined') {
+            this[UPDATE_ON_CONNECTED] = [
+              ...this[UPDATE_ON_CONNECTED],
+              propName
+            ];
+          }
         });
       }
     }
@@ -32,9 +36,7 @@ export const withObservedProperties = (Base = HTMLElement) =>
     connectedCallback () {
       this[UPDATE_ON_CONNECTED]
         .forEach(propName => {
-          if (typeof this[propName] !== 'undefined') {
-            this.propertyChangedCallback(propName, undefined, this[propName]);
-          }
+          this.propertyChangedCallback(propName, undefined, this[propName]);
         });
 
       super.connectedCallback && super.connectedCallback();
