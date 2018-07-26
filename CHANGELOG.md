@@ -1,3 +1,10 @@
+## Unreleased
+
+### Fixed
+
+- Makes propertyChangedCallback mimic the way attributeChangedCallback is dispatched on connectedCallback.
+
+
 ## 0.1.9 - 2018-07-18
 
 ### Fixed
