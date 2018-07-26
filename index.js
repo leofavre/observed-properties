@@ -9,8 +9,10 @@ export const withObservedProperties = (Base = HTMLElement) =>
 
       if (typeof this.propertyChangedCallback === 'function') {
         observedProperties.forEach(propName => {
+          const initialValue = this[propName];
           const PROP_NAME = Symbol(propName);
-          this[PROP_NAME] = this[propName];
+
+          this[PROP_NAME] = initialValue;
 
           Object.defineProperty(this, propName, {
             get () {
@@ -23,11 +25,8 @@ export const withObservedProperties = (Base = HTMLElement) =>
             }
           });
 
-          if (typeof this[propName] !== 'undefined') {
-            this[UPDATE_ON_CONNECTED] = [
-              ...this[UPDATE_ON_CONNECTED],
-              propName
-            ];
+          if (typeof initialValue !== 'undefined') {
+            this[UPDATE_ON_CONNECTED].push(propName);
           }
         });
       }
