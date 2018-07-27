@@ -1,8 +1,15 @@
+## 1.0.1 - 2018-07-26
+
+### Fixed
+
+- Improved code readability.
+
+
 ## 1.0.0 - 2018-07-25
 
 ### Fixed
 
-- Makes propertyChangedCallback mimic the way attributeChangedCallback is dispatched on connectedCallback.
+- Made `propertyChangedCallback` mimic the way `attributeChangedCallback` is dispatched on `connectedCallback`.
 
 
 ## 0.1.9 - 2018-07-18
