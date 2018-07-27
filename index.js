@@ -10,17 +10,17 @@ export const withObservedProperties = (Base = HTMLElement) =>
       if (typeof this.propertyChangedCallback === 'function') {
         observedProperties.forEach(propName => {
           const initialValue = this[propName];
-          const PROP_NAME = Symbol(propName);
+          const CACHED_VALUE = Symbol(propName);
 
-          this[PROP_NAME] = initialValue;
+          this[CACHED_VALUE] = initialValue;
 
           Object.defineProperty(this, propName, {
             get () {
-              return this[PROP_NAME];
+              return this[CACHED_VALUE];
             },
             set (value) {
-              const oldValue = this[PROP_NAME];
-              this[PROP_NAME] = value;
+              const oldValue = this[CACHED_VALUE];
+              this[CACHED_VALUE] = value;
               this.propertyChangedCallback(propName, oldValue, value);
             }
           });
