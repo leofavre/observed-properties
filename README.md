@@ -2,7 +2,7 @@
 
 ### Observed properties for native web components.
 
-![](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)
+[![Build Status](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)](https://travis-ci.org/leofavre/observed-properties) [![Coverage Status](https://coveralls.io/repos/github/leofavre/observed-properties/badge.svg?branch=feature%2Fbuild-system)](https://coveralls.io/github/leofavre/observed-properties?branch=feature%2Fbuild-system)
 
 Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
@@ -21,13 +21,13 @@ npm install observed-properties --save
 Import `withObservedProperties`.
 
 ```javascript
-import { withObservedProperties } from 'observed-properties';
+import withObservedProperties from 'observed-properties';
 ```
 
 Use the whole path to the `index.js` file if you want the script to [work on modern browsers natively](https://caniuse.com/#feat=es6-module), without having to depend on a build process.
 
 ```javascript
-import { withObservedProperties } from './node_modules/observed-properties/index.js';
+import withObservedProperties from './node_modules/observed-properties/src/index.js';
 ```
 
 ## Enhance HTMLElement

@@ -1,4 +1,4 @@
-import { withObservedProperties } from './index.js';
+import withObservedProperties from '../src/index.js';
 import sinon from 'sinon';
 
 let testEl;

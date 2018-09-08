@@ -1,6 +1,6 @@
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
-const filesPattern = '*.test.js';
+const filesPattern = 'tests/index.test.js';
 
 module.exports = (config) => {
   config.set({
@@ -33,7 +33,7 @@ module.exports = (config) => {
                 esModules: true
               }
             },
-            exclude: /((node_modules)(\\|\/|$)|test.js$)/
+            exclude: /((node_modules)(\\|\/|$)|test\.js$)/
           }
         ]
       }
