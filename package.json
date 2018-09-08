@@ -11,7 +11,7 @@
     "build-es": "./node_modules/.bin/cross-env BABEL_ENV=es rollup -c",
     "build-cjs": "./node_modules/.bin/cross-env BABEL_ENV=cjs rollup -c",
     "build-iife": "./node_modules/.bin/cross-env BABEL_ENV=iife rollup -c",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "karma start karma.conf.js"
   },
   "repository": {
