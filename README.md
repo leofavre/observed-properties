@@ -79,7 +79,7 @@ class TopTen extends EnhancedHTMLElement {
 ## Complete example
 
 ```javascript
-import { withObservedProperties } from 'observed-properties';
+import withObservedProperties from 'observed-properties';
 
 const EnhancedHTMLElement = withObservedProperties(HTMLElement);
 
