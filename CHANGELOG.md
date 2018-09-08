@@ -1,3 +1,10 @@
+## Unreleased
+
+### Added
+
+- Now the package has three distribution formats: ES6 modules, CommonJS and a global variable for browsers. This breaks the way importing behaves, making this release a major release.
+
+
 ## 1.0.1 - 2018-07-26
 
 ### Fixed
