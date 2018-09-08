@@ -19,7 +19,7 @@ module.exports = (config) => {
       watched: false
     }],
     preprocessors: {
-      '**/*.test.js': ['webpack']
+      [filesPattern]: ['webpack']
     },
     webpack: {
       mode: 'development',
