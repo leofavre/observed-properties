@@ -12,6 +12,7 @@
     "build-cjs": "./node_modules/.bin/cross-env OUTPUT_FORMAT=cjs rollup -c",
     "build-iife": "./node_modules/.bin/cross-env OUTPUT_FORMAT=iife rollup -c",
     "prepublishOnly": "npm run build",
+    "send-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "karma start karma.conf.js",
     "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --auto-watch"
   },
@@ -35,6 +36,7 @@
   "homepage": "https://github.com/leofavre/observed-properties#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "eslint": "^4.19.0",
     "eslint-config-semistandard": "^12.0.1",
