@@ -1,6 +1,6 @@
 const UPDATE_ON_CONNECTED = Symbol('UPDATE_ON_CONNECTED');
 
-export const withObservedProperties = (Base = HTMLElement) =>
+const withObservedProperties = (Base = HTMLElement) =>
   class extends Base {
     constructor () {
       super();
@@ -41,3 +41,5 @@ export const withObservedProperties = (Base = HTMLElement) =>
       super.connectedCallback && super.connectedCallback();
     }
   };
+
+export default withObservedProperties;
