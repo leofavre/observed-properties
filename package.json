@@ -8,10 +8,10 @@
   "module": "src/index.js",
   "scripts": {
     "build": "npm run build-es && npm run build-cjs && npm run build-iife",
-    "build-es": "OUTPUT_FORMAT=es rollup -c",
-    "build-cjs": "OUTPUT_FORMAT=cjs rollup -c",
-    "build-iife": "OUTPUT_FORMAT=iife rollup -c",
-    "prepublishOnly": "npm run build",
+    "build-es": "./node_modules/.bin/cross-env OUTPUT_FORMAT=es rollup -c",
+    "build-cjs": "./node_modules/.bin/cross-env OUTPUT_FORMAT=cjs rollup -c",
+    "build-iife": "./node_modules/.bin/cross-env OUTPUT_FORMAT=iife rollup -c",
+    "prepare": "npm run build",
     "send-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "karma start karma.conf.js",
     "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --auto-watch"
