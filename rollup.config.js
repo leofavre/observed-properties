@@ -1,16 +1,19 @@
 const babel = require('rollup-plugin-babel');
-const { BABEL_ENV } = process.env;
+const { BROWSER, BABEL_ENV } = process.env;
 
 module.exports = () => {
   const plugins = [
     babel()
   ];
 
+  const format = BROWSER ? 'iife' : BABEL_ENV;
+  const path = BROWSER ? `browser/${BABEL_ENV}` : `${BABEL_ENV}`;
+
   return {
     input: 'src/index.js',
     output: {
-      format: BABEL_ENV,
-      file: `dist/${BABEL_ENV}/index.js`,
+      format,
+      file: `dist/${path}/index.js`,
       name: 'withObservedProperties'
     },
     plugins

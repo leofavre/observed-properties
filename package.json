@@ -2,16 +2,17 @@
   "name": "observed-properties",
   "version": "1.0.1",
   "description": "Observed properties for native custom elements",
-  "browser": "dist/iife/index.js",
+  "browser": "dist/browser/es/index.js",
   "main": "dist/cjs/index.js",
   "jsnext:main": "dist/es/index.js",
   "module": "src/index.js",
   "scripts": {
-    "build": "npm run build-es && npm run build-cjs && npm run build-iife",
+    "build": "npm run build-es && npm run build-cjs && npm run build-browser-es && npm run build-browser-cjs",
     "build-es": "./node_modules/.bin/cross-env BABEL_ENV=es rollup -c",
     "build-cjs": "./node_modules/.bin/cross-env BABEL_ENV=cjs rollup -c",
-    "build-iife": "./node_modules/.bin/cross-env BABEL_ENV=iife rollup -c",
-    "prepare": "npm run build",
+    "build-browser-es": "./node_modules/.bin/cross-env BROWSER=true BABEL_ENV=es rollup -c",
+    "build-browser-cjs": "./node_modules/.bin/cross-env BROWSER=true BABEL_ENV=cjs rollup -c",
+    "prepublishOnly": "npm run build",
     "test": "karma start karma.conf.js"
   },
   "repository": {
