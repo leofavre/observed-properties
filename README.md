@@ -2,7 +2,7 @@
 
 ### Observed properties for native web components.
 
-[![Build Status](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)](https://travis-ci.org/leofavre/observed-properties) [![Coverage Status](https://coveralls.io/repos/github/leofavre/observed-properties/badge.svg?branch=feature%2Fbuild-system)](https://coveralls.io/repos/github/leofavre/observed-properties)
+[![Build Status](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)](https://travis-ci.org/leofavre/observed-properties) [![Coverage Status](https://coveralls.io/repos/github/leofavre/observed-properties/badge.svg?branch=feature%2Fbuild-system)](https://coveralls.io/github/leofavre/observed-properties?branch=feature%2Fbuild-system)
 
 Have you ever wondered why native web components have an API to handle attribute changes but not property changes?
 
