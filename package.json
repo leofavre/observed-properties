@@ -11,7 +11,7 @@
     "build-es": "./node_modules/.bin/cross-env OUTPUT_FORMAT=es rollup -c",
     "build-cjs": "./node_modules/.bin/cross-env OUTPUT_FORMAT=cjs rollup -c",
     "build-iife": "./node_modules/.bin/cross-env OUTPUT_FORMAT=iife rollup -c",
-    "prepublishOnly": "npm install && npm run build",
+    "prepublishOnly": "npm run build",
     "send-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "karma start karma.conf.js",
     "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --auto-watch"
