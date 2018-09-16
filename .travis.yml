@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - '8'
 script: npm test
-before_deploy: npm run build
 after_script: npm run send-coverage
+before_deploy: npm run build
 deploy:
   skip_cleanup: true
   provider: npm
