@@ -7,6 +7,7 @@
   "jsnext:main": "dist/es/index.js",
   "module": "src/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "npm run build-es && npm run build-cjs && npm run build-iife",
     "build-es": "./node_modules/.bin/cross-env OUTPUT_FORMAT=es rollup -c",
     "build-cjs": "./node_modules/.bin/cross-env OUTPUT_FORMAT=cjs rollup -c",

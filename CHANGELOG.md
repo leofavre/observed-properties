@@ -1,3 +1,10 @@
+## 2.0.3 - 2018-09-16
+
+### Fixed
+
+- Again, Travis CI configuration for automatic deployment.
+
+
 ## 2.0.2 - 2018-09-08
 
 ### Fixed
