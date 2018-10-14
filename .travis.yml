@@ -1,15 +1,13 @@
 language: node_js
-node_js:
-- '8'
-script: npm test
-after_script: npm run send-coverage
-before_deploy: npm run build
-deploy:
-  skip_cleanup: true
-  provider: npm
-  email: leo@leofavre.com
-  api_key:
-    secure: Uy8P1skQqWbYnAjve2yf+Yl49IGZAYjq/iexgCy/OrwTvDLiAOAXfScn5CkYh6Wx7jd3ttIeGvGsLES6Bva3VnYlbwyKSmx8PsSQkItn7KCkm7j1CcUasHc4mw3nc2LKzrfmj88HhISx/o58bDHtOYAVbriAcR7rMbO0DrTaR9dXuaotZW7uCvVaOSSx2ElN61bcs+c1BHpekC04/E9vyp1l2HDlL/a1sgO7kggKA7r8VYKQAysaGB+0xURXaK3yLvcPmjqW5pwhlJ5prZudiGkID1ekVbyMM/BqupQ5Qs23w0w/7TKc0K5a0bnoxMjq3NkXpsRw7wmNalQ+daQCD/VGCejtnLSiyIpSf5+Ybqbk4UO2CBhmhldy9k2uQwpzLNT2mCMCHSMnVXBVzUUshF8ShtUUqqYaQyPPNx2uz48C8ZklhAa5T+HX8oNZh0UtDcKNjBVTzO13FXCOLGrw89KUa+mEQI1A6pPH4zNT8H7+NgjmjBhDUJ/06YGkz2dcYBybzGq6fbEZDMvVwBMcFZ5gCRrZlnC7Nxg8OXiJclafRrmdb1sxXNKp8tuOX4e3Sk8W41VY5gDZ/3UCkFq51TKMlExvt2pljnVqqXX8PpZNZMGvA+Oy5IKOmrj9xhSIzE72g56i5XwQOXdkEegpw/6NeK0snXs/rQA3WGpPmGk=
-  on:
-    tags: true
-    repo: leofavre/observed-properties
+notifications:
+  email: false
+node_js: 8
+script:
+  - npm test
+  - npm run build
+after_success:
+  - npm run send-coverage
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

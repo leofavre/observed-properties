@@ -11,6 +11,7 @@
     "build-es": "./node_modules/.bin/cross-env OUTPUT_FORMAT=es rollup -c",
     "build-cjs": "./node_modules/.bin/cross-env OUTPUT_FORMAT=cjs rollup -c",
     "build-iife": "./node_modules/.bin/cross-env OUTPUT_FORMAT=iife rollup -c",
+    "semantic-release": "semantic-release",
     "send-coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test": "karma start karma.conf.js",
     "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --auto-watch"
@@ -34,6 +35,8 @@
   },
   "homepage": "https://github.com/leofavre/observed-properties#readme",
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.4",
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
@@ -56,6 +59,7 @@
     "mocha": "^5.1.1",
     "puppeteer": "^1.3.0",
     "rollup": "^0.65.2",
+    "semantic-release": "^15.9.17",
     "semistandard": "^12.0.1",
     "sinon": "^6.1.3",
     "sinon-chai": "^3.2.0",
