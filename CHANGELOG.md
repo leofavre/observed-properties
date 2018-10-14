@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/leofavre/observed-properties/compare/v2.0.3...v3.0.0) (2018-10-14)
+
+
+### Bug Fixes
+
+* Use `class {}` as base instead of `HTMLElement` ([429f88b](https://github.com/leofavre/observed-properties/commit/429f88b))
+
+
+### BREAKING CHANGES
+
+* Use an empty `class {}` as base instead of `HTMLElement`
+
 ## 2.0.3 - 2018-09-16
 
 ### Fixed
