@@ -14,6 +14,10 @@ describe('withObservedProperties', () => {
     spy = undefined;
   });
 
+  it('Should not break when not passed a base class.', () => {
+    expect(withObservedProperties()).to.be.a('function');
+  });
+
   it('Should verify that attributeChangedCallback is not called ' +
     'if it is defined after observedAttributes.', () => {
     class AttrCbDefinedAfter extends HTMLElement {
