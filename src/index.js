@@ -1,6 +1,6 @@
 const UPDATE_ON_CONNECTED = Symbol('UPDATE_ON_CONNECTED');
 
-const withObservedProperties = (Base = HTMLElement) =>
+const withObservedProperties = (Base = class {}) =>
   class extends Base {
     constructor () {
       super();
