@@ -1,6 +1,6 @@
 # Observed Properties
 
-### Observed properties for native web components.
+### Observed properties for web components.
 
 [![Build Status](https://travis-ci.org/leofavre/observed-properties.svg?branch=master)](https://travis-ci.org/leofavre/observed-properties) [![Coverage Status](https://coveralls.io/repos/github/leofavre/observed-properties/badge.svg?branch=feature%2Fbuild-system)](https://coveralls.io/github/leofavre/observed-properties?branch=feature%2Fbuild-system)
 
