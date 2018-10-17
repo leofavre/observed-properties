@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/leofavre/observed-properties/compare/v3.0.0...v3.0.1) (2018-10-15)
+
+
+### Bug Fixes
+
+* Standardize documentation with other repositories ([9c09aa6](https://github.com/leofavre/observed-properties/commit/9c09aa6))
+
 # [3.0.0](https://github.com/leofavre/observed-properties/compare/v2.0.3...v3.0.0) (2018-10-14)
 
 
